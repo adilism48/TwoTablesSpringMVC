@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: TwoTablesSpringMVC
+  datasource:
+    url: jdbc:postgresql://localhost:5432/two_tables_db
+    hikari:
+      username: admin
+      password: admin
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+logging:
+  level:
+    sql: info

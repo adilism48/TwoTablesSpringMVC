@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +25,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User createUser(String name, String email, Date dateOfBirth) {
         return this.userRepository.save(new User(null, name, email, dateOfBirth));
+    }
+
+    @Override
+    public Optional<User> findUserById(int id) {
+        return this.userRepository.findById(id);
     }
 
     @Override

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${user.name}]]</title>
+</head>
+<body>
+<a th:href="@{/user/list}">&larr; User List</a>
+<h1>User: [[${user.name}]]</h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${user.id}"></span></li>
+    <li><strong>Name</strong>: <span th:text="${user.name}"></span></li>
+    <li><strong>Email</strong>: <span th:text="${user.email}"></span></li>
+    <li><strong>Date of Birth</strong>: <span th:text="${user.dateOfBirth}"></span></li>
+</ul>
+<a th:href="@{/user/{userId}/edit(userId=${user.id})}">Edit</a>
+<form method="post" th:action="@{/user/{userId}/delete(userId=${user.id})}">
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>

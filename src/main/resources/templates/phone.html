@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${user.name}]]: [[${phone.phoneNumber}]]</title>
+</head>
+<body>
+<a th:href="@{/user/{userId}(userId=${user.id})}">&larr; [[${user.name}]] Info</a>
+<h1>[[${user.name}]]: [[${phone.phoneNumber}]]</h1>
+<ul>
+    <li><strong>ID</strong>: <span th:text="${phone.id}"></span></li>
+    <li><strong>Phone number</strong>: <span th:text="${phone.phoneNumber}"></span></li>
+</ul>
+<a th:href="@{/user/{userId}/phone/{phoneId}/edit(userId=${user.id}, phoneId=${phone.id})}">Edit</a>
+<form method="post" th:action="@{/user/{userId}/phone/{phoneId}/delete(userId=${user.id}, phoneId=${phone.id})}">
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>

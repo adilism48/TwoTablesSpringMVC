@@ -12,5 +12,5 @@ create table if not exists app.phone
 (
     id           serial primary key,
     phone_number varchar(50) not null,
-    user_id      int references app.user (id) not null
+    user_id      int references app.user (id) on delete cascade
 );

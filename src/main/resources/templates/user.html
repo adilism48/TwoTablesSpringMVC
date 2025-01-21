@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>[[${user.name}]]</title>
@@ -12,6 +12,15 @@
     <li><strong>Name</strong>: <span th:text="${user.name}"></span></li>
     <li><strong>Email</strong>: <span th:text="${user.email}"></span></li>
     <li><strong>Date of Birth</strong>: <span th:text="${user.dateOfBirth}"></span></li>
+    <li><strong>Phone numbers</strong>: <a th:href="@{/user/{userId}/phone/create(userId=${user.id})}">Add new
+        number</a>
+        <ol>
+            <li th:each="phone : ${phones}">
+                <span th:text="${phone.phoneNumber}"></span>
+                <a th:href="@{/user/{userId}/phone/{phoneId}(userId=${user.id}, phoneId=${phone.id})}">More</a>
+            </li>
+        </ol>
+    </li>
 </ul>
 <a th:href="@{/user/{userId}/edit(userId=${user.id})}">Edit</a>
 <form method="post" th:action="@{/user/{userId}/delete(userId=${user.id})}">

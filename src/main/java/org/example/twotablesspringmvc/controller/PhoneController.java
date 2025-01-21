@@ -1,5 +1,6 @@
 package org.example.twotablesspringmvc.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.twotablesspringmvc.controller.payload.UpdatePhonePayload;
 import org.example.twotablesspringmvc.model.Phone;
@@ -22,7 +23,6 @@ public class PhoneController {
     private final PhoneService phoneService;
     private final UserService userService;
 
-
     @ModelAttribute("user")
     public User user(@PathVariable("userId") int userId) {
         return this.userService.findUserById(userId)
@@ -34,6 +34,7 @@ public class PhoneController {
         return this.phoneService.findPhoneById(phoneId)
                 .orElseThrow(() -> new NoSuchElementException("Phone not found"));
     }
+
 
     @GetMapping
     public String getPhonePage() {
@@ -47,7 +48,7 @@ public class PhoneController {
 
     @PostMapping("/edit")
     public String editPhone(@PathVariable("phoneId") int phoneId, @PathVariable("userId") int userId,
-                            Model model, UpdatePhonePayload payload, BindingResult bindingResult) {
+                            Model model, @Valid UpdatePhonePayload payload, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()

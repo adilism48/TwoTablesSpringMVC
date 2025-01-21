@@ -1,5 +1,6 @@
 package org.example.twotablesspringmvc.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.twotablesspringmvc.controller.payload.NewPhonePayload;
 import org.example.twotablesspringmvc.controller.payload.UpdateUserPayload;
@@ -28,6 +29,7 @@ public class UserController {
                 .orElseThrow(() -> new NoSuchElementException("User not found"));
     }
 
+
     @GetMapping
     public String getUserPage(@PathVariable("userId") int userId, Model model) {
         model.addAttribute("phones", phoneService.findAllByUserId(userId));
@@ -40,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String editUser(@PathVariable("userId") int userId, Model model, UpdateUserPayload payload, BindingResult bindingResult) {
+    public String editUser(@PathVariable("userId") int userId, Model model, @Valid UpdateUserPayload payload, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()
@@ -66,8 +68,8 @@ public class UserController {
         return "new_phone";
     }
 
-    @PostMapping("phone/create")
-    public String createPhone(@PathVariable int userId, Model model, NewPhonePayload payload, BindingResult bindingResult) {
+    @PostMapping("/phone/create")
+    public String createPhone(@PathVariable int userId, Model model, @Valid NewPhonePayload payload, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()

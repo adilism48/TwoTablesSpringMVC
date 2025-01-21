@@ -12,6 +12,11 @@
         <input type="text" name="phoneNumber" th:value="${payload != null ? payload.phoneNumber : phone.phoneNumber}">
     </label><br>
     <input type="hidden" name="user" th:value="${user.id}">
+    <div th:if="${errors}">
+        <ul>
+            <li th:each="error: ${errors}" th:text="${error}"></li>
+        </ul>
+    </div>
     <button type="submit">Create</button>
 </form>
 </body>

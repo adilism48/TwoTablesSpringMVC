@@ -1,5 +1,6 @@
 package org.example.twotablesspringmvc.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.twotablesspringmvc.controller.payload.NewUserPayload;
 import org.example.twotablesspringmvc.service.UserService;
@@ -30,7 +31,7 @@ public class UserListController {
     }
 
     @PostMapping("/create")
-    public String createUser(Model model, NewUserPayload payload, BindingResult bindingResult) {
+    public String createUser(Model model, @Valid NewUserPayload payload, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
             model.addAttribute("errors", bindingResult.getAllErrors().stream()

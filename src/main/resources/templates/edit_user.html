@@ -5,7 +5,7 @@
     <title>Edit User</title>
 </head>
 <body>
-<a th:href="@{/user/{userId}/edit(userId=${user.id})}">&larr; To user</a>
+<a th:href="@{/user/{userId}(userId=${user.id})}">&larr; To user</a>
 <h1>Edit User &laquo;[[${user.name}]]&raquo;</h1>
 <form method="post" th:action="@{/user/{userId}/edit(userId=${user.id})}">
     <label>
@@ -20,6 +20,11 @@
         Date of birth:<br>
         <input type="text" name="dateOfBirth" th:value="${payload != null ? payload.dateOfBirth : user.dateOfBirth}">
     </label><br>
+    <div th:if="${errors}">
+        <ul>
+            <li th:each="error: ${errors}" th:text="${error}"></li>
+        </ul>
+    </div>
     <button type="submit">Submit</button>
 </form>
 </body>

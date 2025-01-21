@@ -2,6 +2,8 @@ package org.example.twotablesspringmvc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,8 @@ public class Phone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Pattern(regexp = "^0[357]\\d{8}$", message = "Invalid number, example: 0555998877")
+    @NotBlank(message = "Phone number is required")
     @Column(name = "phone_number")
     private String phoneNumber;
 

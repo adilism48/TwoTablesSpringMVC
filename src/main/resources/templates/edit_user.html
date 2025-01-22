@@ -9,7 +9,9 @@
 </head>
 <body>
 <div class="container">
-    <a th:href="@{/user/{userId}(userId=${user.id})}">&larr; To user</a>
+    <nav class="navbar">
+        <a class="btn btn-link" th:href="@{/user/{userId}(userId=${user.id})}">&larr; To user</a>
+    </nav>
     <h1>Edit User &laquo;[[${user.name}]]&raquo;</h1>
     <form method="post" th:action="@{/user/{userId}/edit(userId=${user.id})}">
         <div class="col-lg-4">

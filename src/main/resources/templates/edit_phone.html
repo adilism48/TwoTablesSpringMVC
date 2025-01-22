@@ -9,7 +9,9 @@
 </head>
 <body>
 <div class="container">
-    <a th:href="@{/user/{userId}/phone/{phoneId}(userId=${user.id}, phoneId=${phone.id})}">&larr; To user</a>
+    <nav class="navbar">
+        <a class="btn btn-link" th:href="@{/user/{userId}/phone/{phoneId}(userId=${user.id}, phoneId=${phone.id})}">&larr; To user</a>
+    </nav>
     <h1>Edit phone number</h1>
     <form method="post" th:action="@{/user/{userId}/phone/{phoneId}/edit(userId=${user.id}, phoneId=${phone.id})}">
         <div class="col-lg-4">

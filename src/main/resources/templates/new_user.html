@@ -9,7 +9,9 @@
 </head>
 <body>
 <div class="container">
-    <a th:href="@{/user/list}">&larr; User List</a>
+    <nav class="navbar">
+        <a class="btn btn-link" th:href="@{/user/list}">&larr; User List</a>
+    </nav>
     <h1>Create new user</h1>
     <form method="post" th:action="@{/user/create}">
         <div class="col-lg-4">

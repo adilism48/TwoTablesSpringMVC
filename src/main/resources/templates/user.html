@@ -9,9 +9,10 @@
 </head>
 <body>
 <div class="container">
-    <a th:href="@{/user/list}">&larr; User List</a>
+    <nav class="navbar">
+        <a class="btn btn-link" th:href="@{/user/list}">&larr; User List</a>
+    </nav>
     <h1>User: [[${user.name}]]</h1>
-
     <div class="row">
         <div class="col-lg-6">
             <div class="card mb-4">

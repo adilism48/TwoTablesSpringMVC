@@ -9,7 +9,9 @@
 </head>
 <body>
 <div class="container">
-    <a th:href="@{/user/{userId}(userId=${user.id})}">&larr; [[${user.name}]] Info</a>
+    <nav class="navbar">
+        <a class="btn btn-link" th:href="@{/user/{userId}(userId=${user.id})}">&larr; [[${user.name}]] Info</a>
+    </nav>
     <h1>[[${user.name}]]: [[${phone.phoneNumber}]]</h1>
     <div class="col-lg-6">
         <div class="card mb-4">
